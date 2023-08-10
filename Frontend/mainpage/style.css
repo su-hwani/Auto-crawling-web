@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+body {
+  height: 100vh;
+  margin: 10px;
+  display: grid;
+  text-align: left;
+  place-items: left;
+  color: black;
+}
+
+.logo-div {
+  float: left;
+  padding: 10px;
+}
+
+.fa-react {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  transform-origin: 50% 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.fa-react:hover {
+  -webkit-animation: Rotate 1s linear infinite;
+          animation: Rotate 1s linear infinite;
+}
+
+.title-div {
+  position: absolute;
+  font-size: 1.6rem;
+  left: 40%;
+  top: 0%;
+  float: left;
+  padding: 0px;
+  margin-top: 30px;
+  font-family: "Black Han Sans", sans-serif;
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  -webkit-animation: title 1200ms cubic-bezier(1, 0, 0, 1) both;
+          animation: title 1200ms cubic-bezier(1, 0, 0, 1) both;
+}
+
+.Login-div {
+  text-align: right;
+  justify-content: right;
+  width: 300px;
+  height: 500px;
+  float: right;
+}
+
+.Login-bttn {
+  margin: 5px;
+  padding: 2px;
+  width: 80px;
+  height: 35px;
+  border: 4px solid #000;
+  color: #000;
+  border-radius: 20px;
+  transition: all 0.5s;
+  background: #fff;
+  font-family: "Black Han Sans", sans-serif;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #ffffff;
+}
+
+.Login-bttn:hover {
+  box-shadow: inset 0 0 0 100vmax #000000;
+  color: #fff;
+}
+
+.Login-popup {
+  text-align: left;
+  margin: 10px;
+  padding: 10px;
+  float: right;
+  right: 0%;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 4px solid black;
+  font-family: "Black Han Sans", sans-serif;
+  background-color: #fff;
+  z-index: 1;
+  display: block;
+  visibility: hidden;
+}
+
+.Login-popup.active {
+  -webkit-animation: File-popup 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: File-popup 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  visibility: visible;
+}
+
+.Login-popup.close {
+  -webkit-animation: File-hide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: File-hide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: visibility 0.5s linear;
+}
+
+.ID {
+  margin: 10px;
+}
+
+.ID-input {
+  border: 4px solid black;
+}
+
+.PW {
+  margin: 10px;
+}
+
+.PW-input {
+  border: 4px solid black;
+}
+
+.URL-div {
+  top: 100px;
+  left: 30%;
+  margin: 10px;
+  padding: 10px;
+  width: 550px;
+  height: 100px;
+  position: relative;
+  text-align: left;
+  border: 4px solid black;
+}
+
+.URL-div {
+  font-family: "Black Han Sans", sans-serif;
+}
+
+.URL-input {
+  width: 400px;
+  border: 4px solid black;
+}
+
+.URL-bttn {
+  padding-top: 4px;
+  margin: 9px;
+  width: 45px;
+  height: 30px;
+  border: 4px solid black;
+  background-color: #fff;
+  border-radius: 10px;
+  font-family: "Black Han Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: inset 0 0 0 0 #ffffff;
+}
+
+.URL-bttn:hover {
+  box-shadow: inset 0 0 0 100vmax #000000;
+  color: #fff;
+}
+
+.File-div {
+  top: 100px;
+  left: 20%;
+  margin: 10px;
+  padding: 10px;
+  width: 800px;
+  height: 500px;
+  position: relative;
+  text-align: left;
+  border: 4px solid black;
+  font-family: "Black Han Sans", sans-serif;
+  transition: all 1s;
+  visibility: hidden;
+}
+
+.File-div.active {
+  -webkit-animation: File-popup 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: File-popup 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  visibility: visible;
+}
+
+.File-div.close {
+  -webkit-animation: File-hide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: File-hide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: visibility 0.5s linear;
+}
+
+@-webkit-keyframes title {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes title {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes Rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes Rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes File-popup {
+  0% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes File-popup {
+  0% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes File-hide {
+  0% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+}
+@keyframes File-hide {
+  0% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+}
+.download-bttn {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  width: 250px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 4px solid black;
+  cursor: pointer;
+}
