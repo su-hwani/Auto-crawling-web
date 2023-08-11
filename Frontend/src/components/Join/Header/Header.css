@@ -1,0 +1,13 @@
+div{
+    margin-bottom:1rem;
+}
+header{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img{
+    width: 60%;
+    height:60%;
+}
