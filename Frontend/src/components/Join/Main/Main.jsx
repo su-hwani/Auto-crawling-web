@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styles from './Main.module.css';
-import {MdEmail} from "react-icons/md";
 
 export default function Main() {
   const [info, setInfo] = useState({id:'',passwd:'',email:''});
   const [infos, setInfos] = useState([]);
   const handleChange = (e) => {
-    const [name,value] = e.target;
-    setInfo(info[name]=value);
+    const {value,name} = e.target;
+    setInfo({...info,[name]:value});
   }
   const handleSubmit = (info) => {
     setInfos({...infos,info});
