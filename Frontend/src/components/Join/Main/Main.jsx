@@ -21,8 +21,7 @@ export default function Main() {
         value={info.id}
         name="id"
         onChange={handleChange}
-        className={styles.input}
-        data-name="id"
+        data-name='id'
       />
       <input
         type="password"
@@ -30,7 +29,6 @@ export default function Main() {
         value={info.passwd}
         name="passwd"
         onChange={handleChange}
-        className={styles.input}
       />
       <input
         type="email"
@@ -38,7 +36,6 @@ export default function Main() {
         value={info.email}
         name="email"
         onChange={handleChange}
-        className={styles.input}
       />
     </form>
     <button onSubmit={handleSubmit}>가입하기</button>

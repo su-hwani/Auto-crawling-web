@@ -6,7 +6,7 @@ export default function Footer() {
         <>
         <footer>
             <p>이미 회원가입 하셨나요?</p>
-            <a href=''>로그인하러가기</a>
+            <a href='#'>로그인하러가기</a>
         </footer>
         </>
 
