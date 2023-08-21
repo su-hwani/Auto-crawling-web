@@ -1,4 +1,4 @@
-div{
+/* div{
     margin-bottom:1rem;
 }
 header{
@@ -6,13 +6,13 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 .img{
     width: 60%;
     height: 60%;
 }
-h1{
+/* h1{
     font-size: 24px;
     margin: 19px 0px ;
     font-weight: bold;
-}
+} */
