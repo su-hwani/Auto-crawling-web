@@ -18,7 +18,7 @@ const Login = () => {
         <div className={`${styles['Login-div']}`}>
          <button className={`${styles['Login-bttn']}`} onClick={ToggleLogindiv}>Log-in</button>
          <section>
-        <div className={` ${styles['Login-popup']} + ${LogindivIsOpen === true ? styles['active'] : 'close'}`} id='Login-div'>
+        <div className={` ${styles['Login-popup']} + ${LogindivIsOpen === true ? styles['active'] : styles['close']}`} id='Login-div'>
           <h2>Login Popup</h2>
           <div className={`${styles['ID']}`}>
             <h3> ID </h3>
