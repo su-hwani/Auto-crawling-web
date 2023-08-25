@@ -1,12 +1,30 @@
 import React from 'react';
-import './Footer.module.css'
 
 export default function Footer() {
     return (
         <>
-        <footer>
-            <p>이미 회원가입 하셨나요?</p>
-            <a href='#'>로그인하러가기</a>
+        <footer className='my-3'>
+        <ul className="flex w-96 justify-center">
+        <li className="inline-block">
+          <a href="/Login" className="inline-block no-underline text-myGray_bold">
+            로그인
+          </a>
+        </li>
+        &nbsp;
+        <li className="inline-block before:content-['|'] text-myGray_bold">
+          &nbsp;
+          <a href="#" className="inline-block no-underline text-myGray_bold">
+            아이디 찾기
+          </a>
+        </li>
+        &nbsp;
+        <li className="inline-block before:content-['|'] text-myGray_bold">
+          &nbsp;
+          <a href="/" className="inline-block no-underline text-myGray_bold">
+            비밀번호 찾기
+          </a>
+        </li>
+      </ul>
         </footer>
         </>
 

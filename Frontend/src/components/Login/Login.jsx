@@ -1,18 +1,23 @@
-import React from 'react';
-import Header from './Header/Header';
-import Main from './Main/Main';
-import Footer from './Footer/Footer';
-
-
-
+import React from "react";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import Footer from "./Footer/Footer";
+import Logo from "./Logo/Logo";
 
 export default function Login() {
-    return (
-        <section className="w-96 h-80 bg-indigo-50 relative left-1/2 top-1/2 -translate-x-2/4 -translate-y-2/4 flex flex-col items-center rounded-3xl">
-            <Header/>
-            <Main />
-            <Footer />
-        </section>
-    );
+  return (
+    <>
+      <div className='flex'>
+      <Logo />
+      </div>
+      <section
+        className="w-96 h-80 bg-transparent 
+        flex flex-col justify-center items-center rounded-md border-2 border-myGray"
+      >
+        <Header />
+        <Main />
+      </section>
+        <Footer />
+    </>
+  );
 }
-

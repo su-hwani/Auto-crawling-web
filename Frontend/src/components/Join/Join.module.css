@@ -1,12 +1,10 @@
 .section{
     background-color: var(--color-bg);
+    border-width: 1px;
+    border-color: var(--color-gray);
     border-radius: 20px;
-    position: relative;
     width: 400px;
     height: 450px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
