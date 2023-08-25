@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <ul className="flex w-96 justify-center my-3">
         <li className="inline-block">
-          <a href="/" className="inline-block no-underline text-myGray_bold">
+          <a href="/Join" className="inline-block no-underline text-myGray_bold">
             회원가입
           </a>
         </li>

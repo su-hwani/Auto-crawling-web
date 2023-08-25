@@ -13,7 +13,7 @@ export default function Main() {
   };
   return (
     <div className="h-full w-full flex flex-col items-center mb-0">
-      <form className="h-full w-full flex flex-col items-center">
+      <form className="h-full w-full flex flex-col items-center mt-3">
         <div className="flex h-1/3 w-4/5 mt-0 mb-0 rounded-t-md border-2 border-myGray border-solid justify-center items-center">
           <div className="flex justify-center items-center mb-0">
             <span>
