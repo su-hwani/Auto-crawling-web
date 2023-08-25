@@ -16,7 +16,7 @@ const Login = () => {
       }
     return (
         <div className={`${styles['Login-div']}`}>
-         <button className={`${styles['Login-bttn']}`} onClick={ToggleLogindiv}>Log-in</button>
+         <button className={`${styles['Login-bttn']}`} onClick={ToggleLogindiv}><a href='/Login'>Log-in</a></button>
          <section>
         <div className={` ${styles['Login-popup']} + ${LogindivIsOpen === true ? styles['active'] : styles['close']}`} id='Login-div'>
           <h2>Login Popup</h2>

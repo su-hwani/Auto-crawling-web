@@ -1,7 +1,7 @@
-div{
+.div{
     margin-bottom:1rem;
 }
-header{
+.header{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +11,7 @@ header{
     width: 60%;
     height: 60%;
 }
-h1{
+.h1{
     font-size: 24px;
     margin: 19px 0px ;
     font-weight: bold;

@@ -4,14 +4,14 @@ import {BiLogIn} from 'react-icons/bi';
 export default function Header() {
     return (
     <>
-        <div className='w-full box-border border-b-2 border-myGray border-solid'> 
-        <header>
-        <ul className='flex items-center'>
+        <div className='w-full h-1/4 flex border-b-2 border-myGray border-solid items-center justify-center'> 
+        <header className='h-full'>
+        <ul className='h-full flex items-center'>
             <li>
             <BiLogIn size="20"/>
             </li>&nbsp;
             <li>
-            <h1>로그인</h1>
+            <h1 className='font-bold text-2xl'>로그인</h1>
             </li>
         </ul>
         </header>

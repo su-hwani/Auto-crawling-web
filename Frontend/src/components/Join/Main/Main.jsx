@@ -4,7 +4,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { MdOutlineLockPerson,MdEmail } from 'react-icons/md';
 
 export default function Main() {
-  const [info, setInfo] = useState({id:'',passwd:'',email:''});
+  const [info, setInfo] = useState({id:'',passwd:'',phoneNum:''});
   const [infos, setInfos] = useState([]);
   const handleChange = (e) => {
     const {value,name} = e.target;
@@ -55,10 +55,10 @@ export default function Main() {
             </span>
           </div>
           <input
-            type="email"
-            placeholder="이메일"
-            value={info.email}
-            name="email"
+            type="tel"
+            placeholder="전화번호"
+            value={info.phoneNum}
+            name="phoneNum"
             onChange={handleChange}
             className="h-5/6 w-5/6 border-transparent"
           />
