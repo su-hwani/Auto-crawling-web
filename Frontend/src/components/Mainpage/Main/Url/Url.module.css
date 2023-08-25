@@ -1,0 +1,163 @@
+
+.URL-div {
+    top: 150px;
+    left: 27%;
+    margin: 10px;
+    padding: 10px;
+    width: 600px;
+    height: 100px;
+    position: absolute;
+    text-align: left;
+    border: 4px solid black;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+
+.URL-input {
+    width: 400px;
+    height: 30px;
+    padding-left: 4px;
+    border: 4px solid black;
+}
+
+.URL-bttn {
+    padding-top: 2px;
+    margin: 9px;
+    width: 45px;
+    height: 30px;
+    border: 4px solid black;
+    background-color: #fff;
+    border-radius: 10px;
+    font-family: 'Black Han Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: inset 0 0 0 0 #ffffff;
+}
+
+    .URL-bttn:hover {
+        box-shadow: inset 0 0 0 100vmax #000000;
+        color: #fff;
+        transform:none;
+    }
+
+
+
+.File-div {
+        top: 200px;
+        left: 20%;
+        margin: 10px;
+        padding: 10px;
+        width: 800px;
+        height: 500px;
+        position: relative;
+        text-align: left;
+        border: 4px solid black;
+        font-family: 'Black Han Sans', sans-serif;
+        transition: all 1s;
+        visibility: hidden;
+    }
+    
+        .File-div.active {
+            animation: File-popup 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+            visibility: visible;
+        }
+    
+        .File-div.close {
+            animation: File-hide 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+            transition: visibility 0.5s linear;
+        }
+
+.File-h2{
+    margin-left: 340px;
+    margin-top: 30px;
+}
+.download-bttn {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 4px solid black;
+    cursor: pointer;
+}
+
+
+
+.fa-filepdf {
+    padding: 65px;
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+    margin: 6px;
+    width: 230px;
+    background-color: #fff;
+}
+
+    .fa-filepdf:active {
+        visibility: hidden;
+    }
+
+.loader {
+    margin: auto;
+    border: 20px solid #EAF0F6;
+    border-radius: 50%;
+    border-top: 20px solid #000000;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 44%;
+    top: 35%;
+    animation: Rotate 1s linear infinite;
+    cursor: pointer;
+    z-index: 0;
+}
+
+@keyframes File-popup {
+    0% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+    }
+}
+
+@keyframes File-hide {
+    0% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+    }
+}
+
+@keyframes Rotate {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
