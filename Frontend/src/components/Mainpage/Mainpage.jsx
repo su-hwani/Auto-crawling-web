@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { FaReact, FaUserCircle, FaHistory, FaRegStar, FaFilePdf, FaCog, FaQuestionCircle } from "https://cdn.skypack.dev/react-icons@4.1.0/fa";
-import styles from "./Mainpage.module.css";
+import "./Mainpage.module.css";
 import Menu from './Header/Menu/Menu';
 import Title from './Header/Title/Title';
 import Login from './Header/Login-bttn/Login-bttn';
@@ -23,9 +23,9 @@ const App = () => {
     }
   return(
     
-    <div className={`${styles['Testpage']}`}>
+    <div>
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
-      <div className="Top border-2 h-20">
+      <div className="Top border-2 w-screen h-20">
        <section className="Menu">
          <Menu/>
        </section>

@@ -3,9 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
     height: 100vh;
-    margin: 0px;
     display: grid;
     text-align: left;
     place-items: left;

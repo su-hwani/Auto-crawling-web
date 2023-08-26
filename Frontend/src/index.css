@@ -20,6 +20,9 @@ code {
     monospace;
 } 
 
+.container{
+  margin:0;
+}
 
 :root {
   --color-bg: white;
@@ -37,7 +40,8 @@ code {
 
 body{
   background-color: transparent;
-
+  margin: 0 ;
+  padding: 0;
 }
 
 #root{
@@ -45,8 +49,8 @@ body{
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
+
 
 
