@@ -2,7 +2,7 @@ import './App.css';
 import Join from './components/Join/Join';
 import Login from './components/Login/Login';
 import Mainpage from './components/Mainpage/Mainpage';
-import {createBrowserRouter,RouterProvider} from 'react-router-dom';
+import {createBrowserRouter,RouterProvider,useNavigate} from 'react-router-dom';
 
 const router = createBrowserRouter([
   {

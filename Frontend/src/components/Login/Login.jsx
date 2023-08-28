@@ -6,10 +6,8 @@ import Logo from "./Logo/Logo";
 
 export default function Login() {
   return (
-    <>
-      <div className='flex'>
+    <div className='h-full w-full flex flex-col justify-center items-center'>
       <Logo />
-      </div>
       <section
         className="w-96 h-80 bg-transparent 
         flex flex-col justify-center items-center rounded-md border-2 border-myGray"
@@ -18,6 +16,6 @@ export default function Login() {
         <Main />
       </section>
         <Footer />
-    </>
+    </div>
   );
 }

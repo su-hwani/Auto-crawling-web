@@ -8,13 +8,13 @@ import styles from './Join.module.css';
 
 export default function Join() {
     return (
-        <>
+        <div className='h-full w-full flex flex-col justify-center items-center'>
         <section className={styles.section}>
             <Header />
             <Main />
         </section>
         <Footer/>
-        </>
+        </div>
     );
 }
 
