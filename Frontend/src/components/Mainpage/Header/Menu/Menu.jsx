@@ -4,32 +4,32 @@ import styles from './Menu.module.css'
 
 export default function Menu(){
     return (
-        <div className={`${styles['Menu-sidebar']} ${"mt-20 w-40 h-[800px] bg-slate-300"}`}>
-           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate-200 bg-slate-300"}`}>
+        <div className={`${styles['Menu-sidebar']} ${"mt-20 w-40 h-[800px] bg-slate300"}`}>
+           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate200 bg-slate300"}`}>
              <form className={`${styles['fa_react']}`}>
               <FaUserCircle className="Icons" size="40"/>
              </form>
              <h2 className= {`${styles['Logotext']} ${"pl-[52px] pt-2.5 font-primary"}`}>MyPage</h2> 
            </div>
-           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate-200 bg-slate-300"}`}>
+           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate200 bg-slate300"}`}>
              <form className={`${styles['fa_react']}`}>
               <FaHistory className="Icons" size="40"/>
              </form>
              <h2 className={`${styles['Logotext']} ${"pl-[52px] pt-2.5 font-primary"}`}>Recent</h2> 
            </div>
-           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate-200 bg-slate-300"}`}>
+           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate200 bg-slate300"}`}>
              <form className={`${styles['fa_react']}`}>
               <FaRegStar className="Icons" size="40" />
              </form>
              <h2 className={`${styles['Logotext']} ${"pl-[52px] pt-2.5 font-primary"}`}>Favorites</h2> 
            </div>
-           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate-200 bg-slate-300"}`}>
+           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate200 bg-slate300"}`}>
              <form className={`${styles['fa_react']}`}>
               <FaCog className="Icons" size="40" />
              </form>
              <h2 className={`${styles['Logotext']} ${"pl-[52px] pt-2.5 font-primary"}`}>Settings</h2> 
            </div>
-           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate-200 bg-slate-300"}`}>
+           <div className={`${styles['logo-div']} ${"p-4 w-40 h-20 border-b-2 border-b-slate200 bg-slate300"}`}>
              <form className={`${styles['fa_react']}`}>
               <FaQuestionCircle className="Icons" size="40" />
              </form>

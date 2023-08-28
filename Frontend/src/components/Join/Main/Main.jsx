@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from './Main.module.css';
-import { BsFillPersonFill } from 'react-icons/bs';
-import { MdOutlineLockPerson,MdEmail } from 'react-icons/md';
+import { BsFillPersonFill, BsPhoneFill } from 'react-icons/bs';
+import { MdOutlineLockPerson } from 'react-icons/md';
+
 
 export default function Main() {
   const [info, setInfo] = useState({id:'',passwd:'',phoneNum:''});
@@ -51,7 +52,7 @@ export default function Main() {
         <div className="flex h-1/3 w-full mb-0 rounded-b-md border-t-0 border-2 border-myGray border-solid justify-center items-center ">
           <div className="flex justify-center items-center mb-0">
             <span>
-              <MdEmail size="16" />
+              <BsPhoneFill size="16" />
             </span>
           </div>
           <input
