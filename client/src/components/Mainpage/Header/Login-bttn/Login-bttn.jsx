@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import styles from './Login-bttn.module.css'
+import {Link} from 'react-router-dom'
+
 
 const Login = () => {
     const [LogindivIsOpen, LogindivSetIsOpen] = useState(false);
@@ -16,7 +18,7 @@ const Login = () => {
       }
     return (
         <div className={`${styles['Login-div']}`}>
-         <button className={`${styles['Login-bttn']}`} onClick={ToggleLogindiv}><a href='/Login'>Log-in</a></button>
+         <Link to='/Login'><button className={`${styles['Login-bttn']}`} onClick={ToggleLogindiv}>Log-in</button></Link>
          <section>
         <div className={` ${styles['Login-popup']} + ${LogindivIsOpen === true ? styles['active'] : styles['close']}`} id='Login-div'>
           <h2>Login Popup</h2>
