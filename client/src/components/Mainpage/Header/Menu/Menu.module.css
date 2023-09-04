@@ -12,6 +12,7 @@
     cursor: pointer;
     margin-top: 1px;  
     margin-bottom: 2px;
+    font-family: 'Black Han Sans', sans-serif;
     transition: all 0.5s;
     box-shadow: inset 0 0 0 0 #808080;
 }
