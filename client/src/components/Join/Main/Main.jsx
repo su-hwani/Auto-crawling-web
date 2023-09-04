@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from './Main.module.css';
+import signIn from '../../../api/signinClient';
 import { BsFillPersonFill, BsPhoneFill } from 'react-icons/bs';
 import { MdOutlineLockPerson } from 'react-icons/md';
 
@@ -11,9 +12,31 @@ export default function Main() {
     const {value,name} = e.target;
     setInfo({...info,[name]:value});
   }
-  const handleSubmit = (info) => {
-    setInfos({...infos,info});
-  }
+  // const handleSubmit = () => {
+  //   // setInfos({...infos,info});
+  //   console.log("Sign In");
+  //   signIn(info.id, info.passwd, info.phoneNum)
+  //     .then((response) => {
+  //       setInfo({ id: '', passwd: '', phoneNum: '' });
+  //       console.log("Response:",response)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+  const handleSubmit = async () => {
+    try {
+        console.log("Sign In");
+        const response = await signIn(info.id, info.passwd, info.phoneNum);
+        console.log(response);
+        if (response) {
+            setInfo({ id: '', passwd: '', phoneNum: '' });
+            window.alert(JSON.stringify(response));
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
 
   return (
     <div className={styles.info}>
@@ -65,8 +88,8 @@ export default function Main() {
           />
         </div>
     </form>
-    <button onSubmit={handleSubmit} className='bg-blackBttn rounded-md font-bold text-lg text-myWhite
-     h-1/4 w-full my-5 hover:brightness-125'>가입하기</button>
+    <button className='bg-blackBttn rounded-md font-bold text-lg text-myWhite
+     h-1/4 w-full my-5 hover:brightness-125' onClick={()=>handleSubmit()}>가입하기</button>
     </div>
       
   );

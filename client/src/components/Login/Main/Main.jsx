@@ -39,18 +39,44 @@ export default function Main() {
 
   const goLogin = () => {
     //로그인 검사후 mainpage로 이동
-    const client = new fakeLoginClient();
+    const client = new fakeLoginClient(info.id);
+    console.log("Client:",client);
     const member = new Member(client);
-    member.loginInfo().then((res) =>
-      res.map((customer) => {
-        let check = false;
-        if (info.id === customer.id && info.passwd === customer.passwd){
-          navigate("/");
-          check = true;
-        }
-        console.log(check);
-
-      }));
+    console.log("Member:",member);
+    // member.loginInfo().then((res) =>
+    //   res.map((customer) => {
+    //     let check = false;
+    //     if (info.id === customer.id && info.passwd === customer.passwd){
+    //       navigate("/");
+    //       check = true;
+    //     }
+    //     console.log(check);
+    //     console.log("Login");
+    //   }));
+    async function handleLogin() {
+      try {
+          const res = await member.loginInfo();
+          console.log(res);
+          if (res) {
+              const { id, passwd } = res;
+      
+              if (info.id === id && info.passwd === passwd) {
+                  navigate("/",{state:{id:id}});
+                  console.log("Login");
+              } else {
+                  window.alert("Login failed, ID doesn't exist");
+                  console.log("Login failed, ID doesn't exist");
+              }
+          } else {
+              window.alert("Login failed due to undefined response");
+              console.log("Login failed due to undefined response");
+          }
+      } catch (error) {
+          console.error(error);
+      }
+  }
+  
+  handleLogin();
   };
 
   return (
