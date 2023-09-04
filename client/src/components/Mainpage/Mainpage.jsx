@@ -7,7 +7,6 @@ import Title from './Header/Title/Title';
 import Login from './Header/Login-bttn/Login-bttn';
 import Url from './Main/Url/Url';
 import loginClient from '../../api/loginClient';
-
 import { QueryClient,QueryClientProvider, useQuery} from "@tanstack/react-query";
 
 const QC = new QueryClient();
@@ -27,7 +26,6 @@ const App = () => {
         }
     }
   return(
-
     <QueryClientProvider client={QC}>
     <div>
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
