@@ -1,12 +1,18 @@
-//app.js
-const express = require('express')
-const app = express()
-const port = 4000
+const express = require("express");
+const bodyParser = require("body-parser");
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const app = express();
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get("/", (req, res)=>{
+    res.json({message: "Hello World!"});
+});
+
+
+require("./routes/user.routes.js")(app);
+// 포트넘버 설정
+app.listen(port=8080, ()=>{
+    console.log("Server is running on port 8080.");
 })
