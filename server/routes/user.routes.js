@@ -13,5 +13,6 @@ router.post("/deleteOne", users.deleteOne);
 router.post("/deleteAll", users.deleteAll);
 router.post("/login", users.login)
 router.post("/logout", users.logout)
+router.post("/register", users.register)
 // router.get("/login", users.getlogin)
 module.exports = router;

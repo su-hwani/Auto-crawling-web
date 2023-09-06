@@ -27,6 +27,8 @@ exports.create = (req,res)=>{
     })
 };
 
+
+
 // 전체 조회 
 exports.findAll = (req,res)=>{
     User.getAll((err, data) => {
@@ -42,7 +44,7 @@ exports.findAll = (req,res)=>{
 exports.findOne = (req,res)=>{
     User.findByID(req.body.user_id, (err, data) => {
         if (err) {
-          if (err.msg === "not_found") {
+          if (err.message === "not_found") {
             res.status(404).send({
               message: `Not found User with id ${req.body.user_id}.`
             });
@@ -59,7 +61,7 @@ exports.findOne = (req,res)=>{
 exports.deleteOne = (req,res)=>{
     User.removeOne(req.body.user_id, (err, data) => {
         if (err) {
-          if (err.msg === "not_found") {
+          if (err.message === "not_found") {
             res.status(404).send({
               message: `Not found User with id ${req.body.user_id}.`
             });
@@ -87,7 +89,7 @@ exports.deleteAll = (req,res)=>{
 exports.login = (req, res)=>{
     User.findByID(req.body.user_id, (err,data)=>{
         if (err) {
-            if (err.msg === "not_found") {
+            if (err.message === "not_found") {
               res.status(404).json({
                 message: `Not found User with id ${req.body.user_id}.`
               });
@@ -108,6 +110,40 @@ exports.login = (req, res)=>{
 exports.logout = (req, res)=>{
     req.session.destroy(err => {
         if (err) throw err;
-        res.status(200).json({msg: "success logout"}) // 웹페이지 강제 이동 & session file 삭제
+        res.status(200).json({message: "success logout"}) // 웹페이지 강제 이동 & session file 삭제
     });
 }
+
+exports.register = async (req, res) => {
+    // pw, id, phonenum 중 하나라도 없는 경우
+    if (!req.body.user_pw || !req.body.user_id || !req.body.user_phonenum) {
+        res.status(400).send({ message: "Content can not be empty!" });
+    }
+
+    
+    await User.findByID(req.body.user_id).then((result)=>{
+        if (! result.err=== "Not Found" ){
+            res.status(500).json({message: result.err})
+        }else if (result.err === null){
+            res.status(500).json({message: "exist ID", data: result.data})
+        }
+    })
+
+    const user = new User({
+        user_id: req.body.user_id,
+        user_pw: req.body.user_pw,
+        user_phonenum: req.body.user_phonenum,
+        user_money: req.body.user_money
+    });
+
+    // 데이터베이스에 저장
+
+    await User.create(user).then((result)=>{
+        if (result.err){
+            res.status(500).json({message: result.err})
+        }else{
+            res.status(200).json({message: "Success register", data: result.data})
+        }
+    })
+  };
+  
