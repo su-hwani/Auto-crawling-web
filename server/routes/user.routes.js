@@ -1,22 +1,17 @@
-module.exports = userRouter =>{
-    const users = require("../controller/user.controller.js");
+// routes/user.js
 
-    // 튜플 생성
-    userRouter.post("/create", users.create);
+const express = require('express');
 
-    // 전체 조회 
-    // app.get("/customers", customers.findAll);
+const router = express.Router();
 
-    // // id로 조회
-    // app.get("/customers/:customerId", customers.findOne);
+const users = require("../controller/user.controller.js");
 
-    // // id로 수정
-    // app.put("/customers/:customerId", customers.update);
-
-    // // id로 삭제
-    // app.delete("/customers/:customerId", customers.delete);
-
-    // // 전체 삭제
-    // app.delete("/customers", customers.deleteAll);
-
-};
+router.post("/create", users.create);
+router.get("/getAll", users.findAll);
+router.get("/findOne", users.findOne);
+router.post("/deleteOne", users.deleteOne);
+router.post("/deleteAll", users.deleteAll);
+router.post("/login", users.login)
+router.post("/logout", users.logout)
+// router.get("/login", users.getlogin)
+module.exports = router;
