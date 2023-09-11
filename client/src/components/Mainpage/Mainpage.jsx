@@ -7,9 +7,10 @@ import Title from './Header/Title/Title';
 import Login from './Header/Login-bttn/Login-bttn';
 import Url from './Main/Url/Url';
 import loginClient from '../../api/loginClient';
-import { QueryClient,queryClientProvider, useQuery} from "@tanstack/react-query";
 
-const queryClient = new QueryClient();
+import { QueryClient,QueryClientProvider, useQuery} from "@tanstack/react-query";
+
+const QC = new QueryClient();
 
 const App = () => {
   const [FiledivIsOpen, FiledivSetIsOpen] = useState(false);
@@ -26,7 +27,8 @@ const App = () => {
         }
     }
   return(
-    <queryClientProvider client={queryClient}>
+
+    <QueryClientProvider client={QC}>
     <div>
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
       <div className="Top border-2 w-screen h-20">
@@ -38,7 +40,7 @@ const App = () => {
       </div>
       <Url/>
      </div>
-     </queryClientProvider>
+     </QueryClientProvider>
   );
 }
 

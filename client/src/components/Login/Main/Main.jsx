@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdOutlineLockPerson } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import Member from "../../../context/Member";
 import fakeLoginClient from "../../../api/fakeLoginClient";
 
@@ -16,35 +16,37 @@ export default function Main() {
     setInfo({ ...info, [name]: value });
   };
 
+
   const goLogin = () => {
     //로그인 검사후 mainpage로 이동
-    const client = new fakeLoginClient();
+    const client = new fakeLoginClient(info.id);
+    console.log("Client:",client);
     const member = new Member(client);
-    const loginOk = member.loginInfo().then((res) =>
-      res.map((customer) => {
-        if (info.id === customer.id && info.passwd === customer.passwd) {
-          navigate("/");
-          return true;
-        } else return false;
-      })
-    );
-    loginOk.then((data) => {
-      let isLogin = false;
-      for (let i = 0; i < data.length; i++) {
-        if (data[i]) isLogin = true;
+    console.log("Member:",member);
+    async function handleLogin() {
+      try {
+          const res = await member.loginInfo();
+          console.log(res);
+          if (res) {
+              const { id, passwd } = res;
+      
+              if (info.id === id && info.passwd === passwd) {
+                  navigate("/",{state:{id:id}});
+                  console.log("Login");
+              } else {
+                  window.alert("Login failed, ID doesn't exist");
+                  console.log("Login failed, ID doesn't exist");
+              }
+          } else {
+              window.alert("Login failed due to undefined response");
+              console.log("Login failed due to undefined response");
+          }
+      } catch (error) {
+          console.error(error);
       }
-      if (isLogin) alert("성공");
-      else {
-        if (info.id === "" || info.passwd === "")
-          alert("아이디 또는 패스워드를 입력하세요!");
-        else if (info.id.length < 4) alert("아이디는 4자리이상 입력해주세요!");
-        else if (info.passwd.length < 6)
-          alert("비밀번호는 6자리이상 입력해주세요!");
-        else if (isNumeric(info.id)) alert("아이디에 숫자만 입력하였습니다!");
-        else alert("잘못입력하였습니다 다시 입력해주세요!!!");
-        setInfo({ id: "", passwd: "" });
-      }
-    });
+  }
+  
+  handleLogin();
   };
 
   return (
