@@ -1,10 +1,6 @@
 import axios from 'axios';
 
 export default class fakeLoginClient {
-<<<<<<< HEAD
-    async login(){
-        return axios.get("fakeData/login.json");
-=======
     constructor(id) {
         this.id = id;
     }
@@ -16,6 +12,5 @@ export default class fakeLoginClient {
         }catch(error){
             console.error("Error:",error);
         }
->>>>>>> d629f522fe2c3160999906c4e58e9b5156bb892a
     }
 }
