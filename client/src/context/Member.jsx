@@ -4,7 +4,10 @@ export default class Member {
   }
 
   async loginInfo() {
-    return this.apiClient.login()
-    .then((res) =>  res.data.info)
+
+    const response = await this.apiClient.login(this.apiClient.id);
+    return response;
+    // return customer;
+
 }
 }
