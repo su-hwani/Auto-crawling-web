@@ -18,7 +18,8 @@ app.use('/user', session({
   saveUninitialized: true, // 세션에 저장할 내역이 없더라도 처음부터 세션을 생성할지 설정
   cookie: {	//세션 쿠키 설정 (세션 관리 시 클라이언트에 보내는 쿠키)
     httpOnly: true, // 자바스크립트를 통해 세션 쿠키를 사용할 수 없도록 함
-    Secure: true
+    Secure: true,
+    //maxAge: 3600000 // 세션 만료 시간 (1시간)
   },
   name: 'session-cookie', // 세션 쿠키명 디폴트값은 connect.sid이지만 다른 이름을 줄수도 있다.
   store: new fileStore(),

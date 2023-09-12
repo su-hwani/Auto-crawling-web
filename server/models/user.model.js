@@ -40,56 +40,42 @@ User.findByID = async (user_id)=>{
 }
 
 // user 전체 조회
-User.getAll = async result =>{
-    sql.query('SELECT * FROM user', (err, res)=>{
-        if(err){
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+User.getAll = async () =>{
+    try{
 
-        console.log("user: ", res);
-        result(null, res);
-    });
+        const res = await query('SELECT * FROM user')
+        return {err:null, data: res}
+    }catch(err){
+        return {err:err, data:null}
+    }
 };
 
 // customer id로 삭제
-User.removeOne = async (user_id, result)=>{
-    sql.query('DELETE FROM user WHERE user_id = ?',user_id, (err, res)=>{
-        if(err){
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+User.removeOne = async (user_id)=>{
+    try{
+        const res = await query('DELETE FROM user WHERE user_id = ?',user_id)
 
         if(res.affectedRows ==0){
             // id 결과가 없을 시 
-            result({msg: "not_found"}, null);
-            return;
+            return {err: "not_found", data:null}
         }
-
-        console.log("deleted user with id: ", user_id);
-        result(null, res);
-    });
+        return {err:null, data: res[0]}
+    }catch(err){
+        return {err:err, data:null}
+    }
 };
 
-// userr 전체 삭제
-User.removeAll = async result =>{
-    sql.query('DELETE FROM user',(err, res)=>{
-        if(err){
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
-
+// user 전체 삭제
+User.removeAll = async () =>{
+    try{
+        const res = await query('DELETE FROM user')
         if(res.affectedRows ==0){
             // id 결과가 없을 시 
-            result({msg: "not_found"}, null);
-            return;
+            return {err: "not found", data: null};
         }
-
-        console.log('deleted ${res.affectedRows} user');
-        result(null, res);
-    });
+        return {err:null, data:res}
+    }catch(err){
+        return {err:err, data:null}
+    }
 }
 module.exports = User;

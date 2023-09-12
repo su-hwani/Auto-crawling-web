@@ -1,7 +1,7 @@
 const User = require("../models/user.model.js");
 
 // 새 객체 생성
-exports.create = (req,res)=>{
+exports.create = async (req,res)=>{
     if(!req.body){
         res.status(400).send({
             message: "Content can not be empty!"
@@ -16,101 +16,100 @@ exports.create = (req,res)=>{
     });
 
     // 데이터베이스에 저장
-    User.create(user, (err, data) =>{
-        if(err){
-            res.status(500).send({
-                message:
-                err.message || "Some error occured while creating the user."
-            });
-        };
-        res.status(200).json(data)
-    })
+    await User.create(user).then((result)=>{
+      if(err){
+        res.status(500).send({
+            message:
+            result.err || "Some error occured while creating the user."
+        });
+      };
+      res.status(200).json(result.data)
+    }) 
 };
 
 
 
 // 전체 조회 
-exports.findAll = (req,res)=>{
-    User.getAll((err, data) => {
-        if (err)
+exports.findAll = async (req,res)=>{
+    await User.getAll().then((result)=>{
+      if (result.err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while retrieving users."
+              result.err || "Some error occurred while retrieving users."
           });
-        else res.status(200).json(data);
+        else res.status(200).json(result.data);
       });
 };
+        
 
-exports.findOne = (req,res)=>{
-    User.findByID(req.body.user_id, (err, data) => {
-        if (err) {
-          if (err.message === "not_found") {
-            res.status(404).send({
-              message: `Not found User with id ${req.body.user_id}.`
-            });
-          } else {
-            res.status(500).send({
-              message: "Error retrieving User with id " + req.body.user_id
-            });
-          }
-        } else res.status(200).json(data);
-      });
+exports.findOne = async (req,res)=>{
+    await User.findByID(req.body.user_id).then((result)=>{
+      if (result.err) {
+        if (result.err === "not_found") {
+          res.status(404).send({
+            message: `Not found User with id ${req.body.user_id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error retrieving User with id " + req.body.user_id
+          });
+        }
+      } else res.status(200).json({ message: "success", data: result.data });
+    });
+
 };
 
 // id로 삭제
-exports.deleteOne = (req,res)=>{
-    User.removeOne(req.body.user_id, (err, data) => {
-        if (err) {
-          if (err.message === "not_found") {
-            res.status(404).send({
-              message: `Not found User with id ${req.body.user_id}.`
-            });
-          } else {
-            res.status(500).send({
-              message: "Could not delete User with id " + req.body.user_id
-            });
-          }
-        } else res.status(200).json({ message: `User was deleted successfully!` });
-      });
+exports.deleteOne = async (req,res)=>{
+    await User.removeOne(req.body.user_id).then((result)=>{
+      if (result.err){
+        if (result.err === "not_found") {
+          res.status(404).send({
+            message: `Not found User with id ${req.body.user_id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Could not delete User with id " + req.body.user_id
+          });
+        }
+      } else res.status(200).json({ message: `User was deleted successfully!` });
+    })
 };
 
 // 전체 삭제
-exports.deleteAll = (req,res)=>{
-    User.removeAll((err, data) => {
-        if (err)
+exports.deleteAll = async (req,res)=>{
+    await User.removeAll().then((result)=>{
+      if (result.err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all users."
+              result.err || "Some error occurred while removing all users."
           });
         else res.status(200).json({ message: `All users were deleted successfully!` });
-      });
+    })
 };
 
-exports.login = (req, res)=>{
-    User.findByID(req.body.user_id, (err,data)=>{
-        if (err) {
-            if (err.message === "not_found") {
-              res.status(404).json({
-                message: `Not found User with id ${req.body.user_id}.`
-              });
-            } else {
-              res.status(500).json({
-                message: "Error retrieving User with id " + req.body.user_id
-              });
-            }
-        } 
-        const user_pw = req.body.user_pw
-        if(user_pw === data.user_pw){
-            req.session.is_login = true 
-        }
-        res.status(200).json(req.body) // is_login == true
-    }) 
+exports.login = async (req, res)=>{
+
+    await User.findByID(req.body.user_id).then((result)=>{
+      if (! result.err=== "Not Found" ){
+        res.status(500).json({message: result.err, data: result.data})
+      }else if (result.err === null){
+        res.status(500).json({message: "Error retrieving User with id", data: result.data})
+      }
+      const user_pw = result.data.user_pw
+      if(user_pw === req.body.user_pw){
+        req.session.is_login = true
+      }
+      res.cookie('sessionID', req.sessionID, { maxAge: 3600000 });
+      res.status(200).json({message: "Success login & produce sessionID", data: result.data})
+    })
 }
 
-exports.logout = (req, res)=>{
-    req.session.destroy(err => {
+exports.logout = async (req, res)=>{
+    await req.session.destroy(err => {
         if (err) throw err;
-        res.status(200).json({message: "success logout"}) // 웹페이지 강제 이동 & session file 삭제
+        res.redirect('/');
+        // res.status(200).json({message: "success logout"}) // 웹페이지 강제 이동 & session file 삭제
     });
 }
 
