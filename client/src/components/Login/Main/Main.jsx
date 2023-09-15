@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdOutlineLockPerson } from "react-icons/md";
 import { BiLogoGoogle } from "react-icons/bi";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Member from "../../../context/Member";
 import fakeLoginClient from "../../../api/fakeLoginClient";
 import { googleLogin } from "../../../api/firebase";
+import { getAuth } from 'firebase/auth';
 
 const isNumeric = (n) => !isNaN(n);
 
@@ -52,12 +53,17 @@ export default function Main() {
   handleLogin();
   };
 
+
   const handleClick = () => {
     googleLogin().then((user) => {
-      if (user !== undefined) navigate("/");
-    
+      if (user !== undefined) {
+        const email = user.email;
+        navigate("/",{state:{id: email}});
+      }
     });
   };
+
+  
 
   return (
     <div className="h-full w-full flex flex-col items-center mb-0">
