@@ -33,5 +33,6 @@ export function googleUserChange(callback) {
     if(user){
       callback(user.email);
     }
+
   });
 }
