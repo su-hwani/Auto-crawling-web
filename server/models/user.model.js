@@ -5,10 +5,10 @@ const query = util.promisify(sql.query).bind(sql);
 
 class User {
     constructor(user) {
-      this.user_id = user.user_id;
-      this.user_pw = user.user_pw;
-      this.user_phonenum = user.user_phonenum;
-      this.user_money = user.user_money;
+      this.user_id = user.user_id || "";
+      this.user_pw = user.user_pw || "";
+      this.user_phonenum = user.user_phonenum || "";
+      this.user_money = user.user_money || 0;
     }
 }
 

@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const userRouter = require('./routes/user.routes');
+const authRouter = require('./routes/auth.routes');
 const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -26,6 +27,7 @@ app.use('/user', session({
 })); 
 
 app.use('/user', userRouter); // 라우팅
+app.use('/auth', authRouter); // 라우팅
 
 app.get("/", (req, res)=>{
   res.send("hello welcome")

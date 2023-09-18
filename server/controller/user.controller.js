@@ -23,11 +23,9 @@ exports.create = async (req,res)=>{
             result.err || "Some error occured while creating the user."
         });
       };
-      res.status(200).json(result.data)
+      res.status(201).json(result.data)
     }) 
 };
-
-
 
 // 전체 조회 
 exports.findAll = async (req,res)=>{
@@ -40,7 +38,6 @@ exports.findAll = async (req,res)=>{
         else res.status(200).json(result.data);
       });
 };
-        
 
 exports.findOne = async (req,res)=>{
     await User.findByID(req.body.user_id).then((result)=>{
@@ -56,7 +53,6 @@ exports.findOne = async (req,res)=>{
         }
       } else res.status(200).json({ message: "success", data: result.data });
     });
-
 };
 
 // id로 삭제
@@ -92,27 +88,34 @@ exports.login = async (req, res)=>{
 
     await User.findByID(req.body.user_id).then((result)=>{
       if (! result.err=== "Not Found" ){
-        res.status(500).json({message: result.err, data: result.data})
+        res.status(404).json({message: result.err, data: result.data})
       }else if (result.err === null){
-        res.status(500).json({message: "Error retrieving User with id", data: result.data})
+        res.status(400).json({message: "Error retrieving User with id", data: result.data})
       }
       const user_pw = result.data.user_pw
       if(user_pw === req.body.user_pw){
         req.session.is_login = true
       }
+
       res.cookie('sessionID', req.sessionID, { maxAge: 3600000 });
-      res.status(200).json({message: "Success login & produce sessionID", data: result.data})
+      res.status(201).json({message: "Success login & produce sessionID", data: result.data})
     })
 }
 
-exports.logout = async (req, res)=>{
-    await req.session.destroy(err => {
-        if (err) throw err;
-        res.redirect('/');
-        // res.status(200).json({message: "success logout"}) // 웹페이지 강제 이동 & session file 삭제
-    });
+exports.logout = async (req, res) => {
+  await req.session.destroy(err => {
+      if (err) {
+          // 세션 파괴 중 오류가 발생한 경우에 대한 처리
+          console.error(err);
+          res.status(404).json({ message: "Failed to logout" });
+      } else {
+          // 성공적으로 세션을 파괴한 경우 리디렉션
+          res.redirect('/');
+      }
+  });
 }
 
+// 회원가입
 exports.register = async (req, res) => {
     // pw, id, phonenum 중 하나라도 없는 경우
     if (!req.body.user_pw || !req.body.user_id || !req.body.user_phonenum) {
