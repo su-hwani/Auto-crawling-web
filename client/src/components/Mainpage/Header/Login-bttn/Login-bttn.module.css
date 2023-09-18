@@ -3,7 +3,7 @@
     justify-content: right;
     right: 0%;
     top: 2.5%;
-    width: 300px;
+    width: 1000px;
     height: 500px;
     float: right;
     position: absolute;
@@ -30,29 +30,36 @@
         color: #fff;
         transform: none;
     }
-.Login-bttn.active{
-    margin: 5px;
-    padding: 2px;
-    width: 80px;
-    height: 35px;
-    border: 4px solid #000;
-    color: #fff;
-    border-radius: 20px;
-    transition: all 0.5s;
-    background: #000;
-    font-family: 'Black Han Sans', sans-serif;
-    cursor: pointer;
-    box-shadow: inset 0 0 0 0 #000000;
-}
-/* .Login-popup {
-    text-align: left;
+
+    .Login-bttn.active {
+        margin: 5px;
+        padding: 2px;
+        width: 80px;
+        height: 35px;
+        border: 4px solid #000;
+        color: #fff;
+        border-radius: 20px;
+        transition: all 0.5s;
+        background: #000;
+        font-family: 'Black Han Sans', sans-serif;
+        cursor: pointer;
+        box-shadow: inset 0 0 0 0 #000000;
+    }
+
+    .Login-bttn.close {
+        visibility: hidden;
+    }
+
+.Login-popup {
+    text-align: center;
     margin: 10px;
     padding: 10px;
-    float: right;
-    right: 0%;
-    position: relative;
-    width: 300px;
-    height: 300px;
+    float: left;
+    top: 15%;
+    right: 40%;
+    position: absolute;
+    width: 500px;
+    height: 180px;
     border: 4px solid black;
     font-family: 'Black Han Sans', sans-serif;
     background-color: #fff;
@@ -62,29 +69,33 @@
 }
 
     .Login-popup.active {
-        animation: File-popup 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        animation: scale-in-center 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
         visibility: visible;
     }
 
     .Login-popup.close {
-        animation: File-hide 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        animation: scale-out-center 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
         transition: visibility 0.5s linear;
     }
 
-.ID {
-    margin: 10px;
-}
-
-.ID-input {
+.Popuptext-div {
+    width: auto;
+    height: 50%;
     border: 4px solid black;
+    padding: 20px;
+    font-family: 'Black Han Sans', sans-serif;
+    background-color: #fff;
+    text-align: center;
+    margin: 5px;
+    white-space: pre-wrap;
 }
 
-.PW {
-    margin: 10px;
-}
-
-.PW-input {
-    border: 4px solid black;
+.Popupbttn-div {
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    margin-top: 10px;
+    left: 80%;
 }
 
 @keyframes File-popup {
@@ -121,4 +132,32 @@
         transform-origin: top;
         opacity: 0;
     }
-} */
+}
+
+@keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-out-center {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+}
