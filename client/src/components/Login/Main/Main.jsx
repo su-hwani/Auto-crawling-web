@@ -58,7 +58,12 @@ export default function Main() {
     googleLogin().then((user) => {
       if (user !== undefined) {
         const email = user.email;
-        navigate("/",{state:{id: email}});
+
+        const photo = user.photoURL;
+        const name = user.displayName;
+        const isGoogleLogin = true;
+        navigate("/",{state:{id: email, photo,name,isGoogleLogin}});
+
       }
     });
   };

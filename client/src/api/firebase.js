@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import { useState } from "react";
+import { GoogleAuthProvider, getAuth, signInWithPopup,signOut,onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -21,7 +20,17 @@ export async function googleLogin() {
   });
 }
 
+export async function googleLogout() {
+  return signOut(auth)
+  .then(() => null)
+}
 
 
-
+export function googleUserChange(callback) {
+  onAuthStateChanged(auth, (user) => {
+    if(user){
+      callback(user.email);
+    }
+  });
+}
 
