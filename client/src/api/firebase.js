@@ -30,6 +30,8 @@ export async function googleLogout() {
 
 export function googleUserChange(callback) {
   onAuthStateChanged(auth, (user) => {
-    callback(user.email);
+    if(user){
+      callback(user.email);
+    }
   });
 }

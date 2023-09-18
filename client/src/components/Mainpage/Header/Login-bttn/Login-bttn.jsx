@@ -11,7 +11,7 @@ const Login = () => {
 
   const [isLogin, isLoginValid] = useState(false);
   const [isLoginPopup, isLoginPopupValid] = useState(false);
-  const [id,setId] = useState();
+  const [id,setId] = useState(userInfo.id);
   var photo = "";
   var name = "";
   var isGoogleLogin = false;
@@ -69,8 +69,10 @@ const ToggleLoginPopup = () =>{
     `Logged Out`
   return (
     <div className={`${styles["Login-div"]}`}>
+      <div className='items-center justify-items-end'>
       {isGoogleLogin&&<Profile photoURL={photo} displayName={name}/>}
       <button className={`${styles['Login-bttn']} + ${isLogin === true ? styles['active'] : styles['']}`} id="Login-bttn" value={userInfo.id} onClick={()=>{ToggleLogindiv(); NavLogbttn();}}>{isLogin?'Log-out':'Log-in'}</button>
+      </div>
             <div className={`${styles['Login-popup']} + ${isLoginPopup === true ? styles['active'] : styles['close']}`}>
                 Login popup
                 <div className={`${styles['Popuptext-div']}`}>
