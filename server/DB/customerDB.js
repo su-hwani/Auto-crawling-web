@@ -1,5 +1,3 @@
-
-
 class customerDB{
     constructor(id,pw,ph){
         this.id = id;
