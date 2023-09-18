@@ -10,7 +10,6 @@ import loginClient from '../../api/loginClient';
 import { QueryClient,QueryClientProvider, useQuery} from "@tanstack/react-query";
 
 const QC = new QueryClient();
-
 const App = () => {
   const [FiledivIsOpen, FiledivSetIsOpen] = useState(false);
   const [LogindivIsOpen, LogindivSetIsOpen] = useState(false);
