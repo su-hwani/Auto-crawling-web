@@ -3,6 +3,7 @@ import Header from '../Join/Header/Header';
 import Main from '../Join/Main/Main'
 import Footer from '../Join/Footer/Footer';
 import styles from './Join.module.css';
+import Logo from '../Join/Logo/Logo';
 
 
 

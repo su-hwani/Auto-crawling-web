@@ -12,18 +12,6 @@ export default function Main() {
     const {value,name} = e.target;
     setInfo({...info,[name]:value});
   }
-  // const handleSubmit = () => {
-  //   // setInfos({...infos,info});
-  //   console.log("Sign In");
-  //   signIn(info.id, info.passwd, info.phoneNum)
-  //     .then((response) => {
-  //       setInfo({ id: '', passwd: '', phoneNum: '' });
-  //       console.log("Response:",response)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
   const handleSubmit = async () => {
     try {
         console.log("Sign In");

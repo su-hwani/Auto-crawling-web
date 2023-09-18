@@ -1,56 +1,40 @@
-const customerDB = require('./DB/customerDB');
+const express = require("express");
+const bodyParser = require("body-parser");
+const userRouter = require('./routes/user.routes');
+const app = express();
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const fileStore = require('session-file-store')(session); // session file store
 
-//app.js
-const express = require('express')
-const cors = require('cors')
-const app = express()
-const port = 4000
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
 
-app.use(cors());
-app.use(express.json());
+// /user 경로 
+app.use('/user', session({
+  secure: true,	// https 환경에서만 session 정보를 주고받도록처리
+  secret: "123", // 암호화하는 데 쓰일 키
+  resave: false, // 세션을 언제나 저장할지 설정함
+  saveUninitialized: true, // 세션에 저장할 내역이 없더라도 처음부터 세션을 생성할지 설정
+  cookie: {	//세션 쿠키 설정 (세션 관리 시 클라이언트에 보내는 쿠키)
+    httpOnly: true, // 자바스크립트를 통해 세션 쿠키를 사용할 수 없도록 함
+    Secure: true,
+    //maxAge: 3600000 // 세션 만료 시간 (1시간)
+  },
+  name: 'session-cookie', // 세션 쿠키명 디폴트값은 connect.sid이지만 다른 이름을 줄수도 있다.
+  store: new fileStore(),
+})); 
 
-app.get('/', (req, res) => {
-  console.log("Hello World!");
-  res.send('Hello World!');
-})
+app.use('/user', userRouter); // 라우팅
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.get("/", (req, res)=>{
+  res.send("hello welcome")
+});
 
-app.get('/auth/exists',(req,res)=>{
-  console.log("/exists", req.query);
-  var id = req.query.id;
-  
-  const sqlquery = "select(id)";
-  
-  const result = customerDB.select(id);
-  console.log(result);
-  res.send(result);
-})
-
-app.post('/auth/signin',(req,res) => {
-  console.log("SignIn Logs : /signin", req.body);
-  var id = req.body.id;
-  var pw = req.body.pw;
-  var ph = req.body.ph;
-
-  const sqlquery = "insert (id, pw, ph)";
-
-  const result = customerDB.insert(id,pw,ph);
-
-  console.log(result);
-  res.send(result);
-
-})
-
-app.get('/auth/login',(req,res)=>{
-  console.log("/login", req.query);
-  var id = req.query.id;
-  
-  const sqlquery = "select(id, pw)";
-  
-  const result = customerDB.select(id);
-  
-  res.send(result);
+app.use((req, res, next) => { // 기본경로나 /user말고 다른곳 진입했을경우 실행
+  res.status(404).send('Not Found');
+});
+// 포트넘버 설정
+app.listen(port=8080, ()=>{
+    console.log("Server is running on port 8080.");
 })

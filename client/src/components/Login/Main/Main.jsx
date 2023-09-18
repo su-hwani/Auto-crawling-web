@@ -16,26 +16,6 @@ export default function Main() {
     setInfo({ ...info, [name]: value });
   };
 
-  // const alarm = () => {
-  //   window.location.reload(true);
-  //   if(window.location.href === process.env.REACT_APP_loginURL){
-  //     if (info.id === "" || info.passwd === "")
-  //           alert("아이디 또는 패스워드를 입력하세요!");
-  //         else if (info.id.length < 4)
-  //           alert("아이디는 4자리이상 입력해주세요!");
-  //         else if (info.passwd.length < 6)
-  //           alert("비밀번호는 6자리이상 입력해주세요!");
-  //         else if (isNumeric(info.id)) alert("아이디에 숫자만 입력하였습니다!");
-  //         else alert("잘못입력하였습니다 다시 입력해주세요!!!");
-  //         setInfo({ id: "", passwd: "" });
-  //         return;
-  //   }
-  //   else {
-  //     alert("로그인 성공!");
-  //     return;
-  //   }
-
-  // }
 
   const goLogin = () => {
     //로그인 검사후 mainpage로 이동
@@ -43,16 +23,6 @@ export default function Main() {
     console.log("Client:",client);
     const member = new Member(client);
     console.log("Member:",member);
-    // member.loginInfo().then((res) =>
-    //   res.map((customer) => {
-    //     let check = false;
-    //     if (info.id === customer.id && info.passwd === customer.passwd){
-    //       navigate("/");
-    //       check = true;
-    //     }
-    //     console.log(check);
-    //     console.log("Login");
-    //   }));
     async function handleLogin() {
       try {
           const res = await member.loginInfo();
