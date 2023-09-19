@@ -12,7 +12,6 @@ const Login = () => {
   const [isLogin, isLoginValid] = useState(false);
   const [isLoginPopup, isLoginPopupValid] = useState(false);
   const [id,setId] = useState(userInfo.id);
-
   var photo = "";
   var name = "";
   var isGoogleLogin = false;

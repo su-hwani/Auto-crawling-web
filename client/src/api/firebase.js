@@ -20,6 +20,7 @@ export async function googleLogin() {
   });
 }
 
+
 export async function googleLogout() {
   return signOut(auth)
   .then(() => null)
@@ -33,4 +34,3 @@ export function googleUserChange(callback) {
     }
   });
 }
-
