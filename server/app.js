@@ -1,14 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const userRouter = require('./routes/user.routes');
+const cors = require('cors');
+
 const app = express();
+
+
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const fileStore = require('session-file-store')(session); // session file store
 
+app.use(cors({ origin: 'http://localhost:3000'}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+
 
 // /user 경로 
 app.use('/user', session({

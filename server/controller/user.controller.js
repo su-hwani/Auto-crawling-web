@@ -127,7 +127,7 @@ exports.register = async (req, res) => {
             res.status(500).json({message: "exist ID", data: result.data})
         }
     })
-
+    
     const user = new User({
         user_id: req.body.user_id,
         user_pw: req.body.user_pw,
