@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import styles from './Main.module.css';
-import signIn from '../../../api/signinClient';
 import { BsFillPersonFill, BsPhoneFill } from 'react-icons/bs';
 import { MdOutlineLockPerson } from 'react-icons/md';
-
+import userClient from '../../../api/userClient';
+import axios from 'axios'
 
 export default function Main() {
-  const [info, setInfo] = useState({id:'',passwd:'',phoneNum:''});
-  const [infos, setInfos] = useState([]);
+  const [info, setInfo] = useState({id:'',passwd:'',phoneNum:'',money:0});
   const handleChange = (e) => {
     const {value,name} = e.target;
     setInfo({...info,[name]:value});
   }
+  const siginIn = new userClient();
   const handleSubmit = async () => {
     try {
-        console.log("Sign In");
-        const response = await signIn(info.id, info.passwd, info.phoneNum);
-        console.log(response);
-        if (response) {
-            setInfo({ id: '', passwd: '', phoneNum: '' });
-            window.alert(JSON.stringify(response));
-        }
+      const response = siginIn.register(info.id,info.passwd,info.phoneNum,info.money).
+      then((res) => console.log(res));
     } catch (error) {
         console.log(error);
     }

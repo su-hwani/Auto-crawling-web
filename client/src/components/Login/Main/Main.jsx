@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Member from "../../../context/Member";
 import fakeLoginClient from "../../../api/fakeLoginClient";
 import { googleLogin } from "../../../api/firebase";
-import { getAuth } from 'firebase/auth';
 
 const isNumeric = (n) => !isNaN(n);
 
